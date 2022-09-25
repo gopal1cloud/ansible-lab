@@ -104,9 +104,9 @@
   mail:
     host: smtp.gmail.com
     port: 587
-    username: "{{ gmail_account }}"
-    password: "{{ gmail_account_password }}"
-    to: Anthony Lin <anthony.lin.test@gmail.com>
+    username: "{{ lookup('env', 'gmail_account') }}"
+    password: "{{ lookup('env', 'gmail_account_password') }}"
+    to: "{{ lookup('env', 'gmail_account') }}","{{ lookup('env', 'sender_email_accounts') }}"
     subject: K8s Scan Report
     body: Please see attached for the scan results
     attach: /tmp/k8s_scan_result.txt
