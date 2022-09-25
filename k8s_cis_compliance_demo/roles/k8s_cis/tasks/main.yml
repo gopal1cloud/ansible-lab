@@ -42,8 +42,8 @@
   template:
     src: templates/k8s_cis_job.yaml.j2
     dest: /tmp/k8s_cis_job.yaml
-    owner: ansible
-    group: ansible
+    owner: aapd
+    group: aapd
     mode: '0644'
 
 - name: Create cis compliance namespace, if it does not exists
