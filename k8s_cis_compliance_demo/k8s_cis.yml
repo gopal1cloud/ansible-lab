@@ -9,4 +9,4 @@
     - name: CIS Compliance Scan
       include_role:
         name: k8s_cis
-        vars_from: secrets.yml
+        #vars_from: secrets.yml
