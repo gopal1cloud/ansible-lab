@@ -68,6 +68,9 @@
   retries: 60
   delay: 10
   ignore_errors: true
+  
+- name: Look up job variable
+  debug: msg="{{ kubebench_job_status.stdout }}"
 
 - name: Ensure that kube-bench job has been completed
   k8s_info:
@@ -119,7 +122,8 @@
 - name: Write scanned report
   copy:
     src: "/tmp/k8s_scan_result.txt"
-    dest: "/tmp/latest_k8s_scan_report.txt" 
+    dest: "/tmp/latest_k8s_scan_report.txt"
+    remote_src: yes
 
 - name: Remove job.yaml and scan_result.txt, if exist
   file:
