@@ -68,9 +68,6 @@
   retries: 60
   delay: 10
   ignore_errors: true
-  
-- name: Look up job variable
-  debug: msg="{{ kubebench_job_status.stdout }}"
 
 - name: Ensure that kube-bench job has been completed
   k8s_info:
