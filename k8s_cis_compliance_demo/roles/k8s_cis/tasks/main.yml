@@ -45,7 +45,11 @@
     owner: ansible
     group: ansible
     mode: '0644'
-
+    
+- name: Get K8S_AUTH_KUBECONFIG
+  set_fact:
+    k8s_auth_kubeconfig: "{{ lookup('env', 'K8S_AUTH_KUBECONFIG') }}"
+      
 - name: Create cis compliance namespace, if it does not exists
   k8s:
     name: k8s-cis-compliance
