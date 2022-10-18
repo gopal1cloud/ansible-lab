@@ -31,6 +31,7 @@
   loop:
     - /tmp/k8s_cis_job.yaml
     - /tmp/k8s_scan_result.txt
+    - /var/www/html/aapdemo/secops/k8s_scan_result.txt
 
 - name: Create k8s_scan_result.txt
   file:
@@ -100,26 +101,21 @@
     path: /tmp/k8s_scan_result.txt
     line: "{{ pod_log.log }}"
 
-- name: Email logs
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: "{{ lookup('env', 'gmail_account') }}"
-    password: "{{ lookup('env', 'gmail_account_password') }}"
-    to: "{{ lookup('env', 'sender_email_accounts') }}"
-    subject: K8s Scan Report
-    body: Please see attached for the scan results
-    attach: /tmp/k8s_scan_result.txt
-
-- name: Remove old k8s_scan_report.txt, if exist
-  file:
-    path: "/tmp/latest_k8s_scan_result.txt"
-    state: absent
+#- name: Email logs
+#  mail:
+#    host: smtp.gmail.com
+#    port: 587
+#    username: "{{ lookup('env', 'gmail_account') }}"
+#    password: "{{ lookup('env', 'gmail_account_password') }}"
+#    to: "{{ lookup('env', 'sender_email_accounts') }}"
+#    subject: K8s Scan Report
+#    body: Please see attached for the scan results
+#    attach: /tmp/k8s_scan_result.txt
     
 - name: Write scanned report
   copy:
     src: "/tmp/k8s_scan_result.txt"
-    dest: "/tmp/latest_k8s_scan_report.txt"
+    dest: "/var/www/html/aapdemo/secops/k8s_scan_result.txt"
     remote_src: yes
 
 - name: Remove job.yaml and scan_result.txt, if exist
