@@ -115,10 +115,9 @@
 #  delegate_to: localhost
 #  run_once: yes
 
-- hosts: localhost
-  name: Send Final Report
+- name: Send Final Report
   assemble:
     src: reports/Consolidated_Config_Drift_Report.txt
-    dest: /var/www/html/aapdemo/netops/Consolidated_Config_Drift_Report.txt
-  delegate_to: 10.1.66.118
+    dest: /tmp/Consolidated_Config_Drift_Report.txt
+  delegate_to: localhost
   run_once: yes
