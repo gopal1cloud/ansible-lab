@@ -116,8 +116,9 @@
 #  run_once: yes
 
 - name: Send Final Report
-  assemble:
+  copy:
     src: reports/Consolidated_Config_Drift_Report.txt
     dest: /tmp/Consolidated_Config_Drift_Report.txt
+    remote_src: yes
   delegate_to: localhost
   run_once: yes
