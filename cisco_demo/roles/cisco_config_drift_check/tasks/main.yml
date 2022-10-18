@@ -115,7 +115,7 @@
 #  delegate_to: localhost
 #  run_once: yes
 
-- host: localhost
+- hosts: localhost
   name: Send Final Report
   assemble:
     src: reports/Consolidated_Config_Drift_Report.txt
