@@ -116,6 +116,6 @@
 #  run_once: yes
 
 - name: Send Final Report
-  shell: "pwd || ls || ls reports"
+  shell: "ls /home/ansible/"
   #shell: "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ansible@10.1.66.118/tmp/ reports/Consolidated_Config_Drift_Report.txt"
   delegate_to: localhost
