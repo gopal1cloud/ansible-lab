@@ -116,9 +116,7 @@
 #  run_once: yes
 
 - name: Send Final Report
-  copy:
-    src: reports/Consolidated_Config_Drift_Report.txt
-    dest: /tmp/Consolidated_Config_Drift_Report.txt
-    remote_src: yes
+  shell:
+    scp reports/Consolidated_Config_Drift_Report.txt ansible@10.1.66.118/tmp/Consolidated_Config_Drift_Report.txt
   delegate_to: localhost
   run_once: yes
