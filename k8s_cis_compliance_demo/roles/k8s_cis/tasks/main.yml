@@ -101,16 +101,16 @@
     path: /tmp/k8s_scan_result.txt
     line: "{{ pod_log.log }}"
 
-#- name: Email logs
-#  mail:
-#    host: smtp.gmail.com
-#    port: 587
-#    username: "{{ lookup('env', 'gmail_account') }}"
-#    password: "{{ lookup('env', 'gmail_account_password') }}"
-#    to: "{{ lookup('env', 'sender_email_accounts') }}"
-#    subject: K8s Scan Report
-#    body: Please see attached for the scan results
-#    attach: /tmp/k8s_scan_result.txt
+- name: Email logs
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: "{{ lookup('env', 'gmail_account') }}"
+    password: "{{ lookup('env', 'gmail_account_password') }}"
+    to: "{{ lookup('env', 'sender_email_accounts') }}"
+    subject: K8s Scan Report
+    body: Please see attached for the scan results
+    attach: /tmp/k8s_scan_result.txt
     
 - name: Write scanned report
   copy:
