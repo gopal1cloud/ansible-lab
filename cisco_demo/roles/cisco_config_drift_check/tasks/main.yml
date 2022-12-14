@@ -93,7 +93,14 @@
     state: absent
     regexp: "^(.*)Current configuration :(.*)$"
   delegate_to: localhost
-
+  
+- name: Remove Password Information from the report
+  lineinfile:
+    path: "reports/{{ inventory_hostname }}_config_drift_report.txt"
+    state: absent
+    regexp: "^(.*) password (.*)$"
+  delegate_to: localhost
+  
 - name: Consolidate Final Report
   assemble:
     src: reports/
@@ -103,15 +110,9 @@
 
 - name: Read Final Report
   command: cat reports/Consolidated_Config_Drift_Report.txt
-  register: command_output
   delegate_to: localhost
   run_once: yes
 
-- name: Print Report to console
-  debug:
-    msg: "{{command_output.stdout}}"
-  delegate_to: localhost
-  run_once: yes
 #- name: Email logs
 #  mail:
 #    host: smtp.gmail.com
