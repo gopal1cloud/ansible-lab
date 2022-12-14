@@ -96,7 +96,7 @@
 
 - name: Consolidate Final Report
   assemble:
-    src: reports/
+    src: reports/{{ inventory_hostname }}_config_drift_report.txt
     dest: reports/Consolidated_Config_Drift_Report.txt
   delegate_to: localhost
   run_once: yes
