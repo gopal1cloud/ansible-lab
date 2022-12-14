@@ -95,10 +95,14 @@
   delegate_to: localhost
 
 - name: Write scanned report
-  copy:
-    src: "reports/{{ inventory_hostname }}_config_drift_report.txt"
-    dest: "/var/www/html/aapdemo/netops/Consolidated_Nexus_Config_Drift_Report.txt"
+  command: "scp -oStrictHostKeyChecking=no reports/{{ inventory_hostname }}_config_drift_report.txt ansible@10.1.66.118:/var/www/html/aapdemo/netops/Consolidated_Nexus_Config_Drift_Report.txt"
   delegate_to: localhost
+  
+#- name: Write scanned report
+#  copy:
+#    src: "reports/{{ inventory_hostname }}_config_drift_report.txt"
+#    dest: "/var/www/html/aapdemo/netops/Consolidated_Nexus_Config_Drift_Report.txt"
+#  delegate_to: localhost
     
 - name: Consolidate Final Report
   assemble:
