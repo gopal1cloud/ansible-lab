@@ -96,14 +96,14 @@
 
 - name: Consolidate Final Report
   assemble:
-    src: reports/{{ inventory_hostname }}_config_drift_report.txt
+    src: reports/
     dest: reports/Consolidated_Config_Drift_Report.txt
   delegate_to: localhost
   run_once: yes
 
 - name: Write scanned report
   copy:
-    src: "reports/Consolidated_Config_Drift_Report.txt"
+    src: "reports/{{ inventory_hostname }}_config_drift_report.txt"
     dest: "/var/www/html/aapdemo/netops/Consolidated_Nexus_Config_Drift_Report.txt"
     remote_src: yes
 
