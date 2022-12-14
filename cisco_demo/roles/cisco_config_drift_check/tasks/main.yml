@@ -98,6 +98,7 @@
   copy:
     src: "reports/{{ inventory_hostname }}_config_drift_report.txt"
     dest: "/tmp/Consolidated_Nexus_Config_Drift_Report.txt"
+    remote_src: yes
   delegate_to: localhost
 
 - name: Copy scanned report
