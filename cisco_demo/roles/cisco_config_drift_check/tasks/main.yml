@@ -101,7 +101,13 @@
   delegate_to: localhost
   run_once: yes
 
-#- name: Send Email with Report
+- name: Write scanned report
+  copy:
+    src: "reports/Consolidated_Config_Drift_Report.txt"
+    dest: "/var/www/html/aapdemo/netops/Consolidated_Nexus_Config_Drift_Report.txt"
+    remote_src: yes
+
+#- name: Email logs
 #  mail:
 #    host: smtp.gmail.com
 #    port: 465
@@ -112,6 +118,4 @@
 #    body: "The consolidated configuration drift report for the Cisco Routers can be found in the attached file"
 #    attach:
 #     - reports/Consolidated_Config_Drift_Report.txt
-#  delegate_to: localhost
-#  run_once: yes
 
